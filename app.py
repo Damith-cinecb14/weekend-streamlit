@@ -4,6 +4,7 @@ from transformers import pipeline
 
 st.set_page_config(page_title="AI Question and Answering app")
 
+@st.cache_resource
 def load_model():
     return pipeline("question-answering", "timpal0l/mdeberta-v3-base-squad2")
 
@@ -17,8 +18,6 @@ with col1:
     context = st.text_area("Text area for context",
                            height=150, placeholder="Enter Context here....")
     question = st.text_area("Text area for question", height=150,placeholder="Ask your question here")
-
-
     submit_btn = st.button("Ask Question", type="primary")
 
 with col2:
